@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Candidate Profile - {{ candidate.applicant_name }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f7f9fc;
+            margin: 0;
+        }
+        .profile-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 6px 24px rgba(42,67,101,0.13);
+            padding: 36px 32px 28px 32px;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        .profile-photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #e2e8f0;
+            background: #f1f5f9;
+        }
+        .profile-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2a4365;
+            margin-bottom: 4px;
+        }
+        .profile-position {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 2px;
+        }
+        /* .status-badge {
+            display: inline-block;
+            border-radius: 12px;
+            padding: 4px 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1px solid #b2f5ea;
+            background: #e6fffa;
+            color: #2c7a7b;
+            margin-top: 6px;
+        } */
+        .profile-section {
+            margin-bottom: 18px;
+        }
+        .profile-section label {
+            font-weight: 600;
+            color: #2a4365;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .profile-section .value {
+            color: #2d3748;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+        .profile-section .value a {
+            color: #3182ce;
+            text-decoration: underline;
+        }
+        .profile-section .value a:hover {
+            color: #2b6cb0;
+        }
+        .profile-actions {
+            margin-top: 24px;
+            text-align: center;
+        }
+        .profile-actions a {
+            display: inline-block;
+            background: #3182ce;
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+        .profile-actions a:hover {
+            background: #225ea8;
+        }
+
+         .status-badge {
+            display: inline-block;
+            border-radius: 14px;
+            padding: 6px 20px;
+            font-size: 1.08rem;
+            font-weight: 600;
+            margin: 12px 0 0 0;
+            border: 1.5px solid #38b2ac;
+            box-shadow: 0 2px 8px rgba(56, 178, 172, 0.08);
+            letter-spacing: 0.5px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .status-badge.submitted {
+            background: #bee3f8;
+            color: #2b6cb0;
+            border-color: #90cdf4;
+        }
+
+        .status-badge.interview {
+            background: #fefcbf;
+            color: #b7791f;
+            border-color: #faf089;
+        }
+
+        .status-badge.offer {
+            background: #c6f6d5;
+            color: #276749;
+            border-color: #68d391;
+        }
+
+        .status-badge.accepted {
+            background: #c6f6d5;
+            color: #22543d;
+            border-color: #68d391;
+        }
+
+        .status-badge.rejected {
+            background: #fed7d7;
+            color: #c53030;
+            border-color: #feb2b2;
+        }
+
+        .status-badge.closed {
+            background: #e2e8f0;
+            color: #4a5568;
+            border-color: #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            {% if candidate.img_candidate %}
+                <img src="{{ candidate.img_candidate.url }}" alt="Candidate Photo" class="profile-photo">
+            {% else %}
+                <img src="{% static 'img/default-profile.png' %}" alt="No Photo" class="profile-photo">
+            {% endif %}
+            <div>
+                <div class="profile-title">{{ candidate.applicant_name }}</div>
+                <div class="profile-position">{{ candidate.mprf_request.position }} ({{ candidate.mprf_request.department.name }})</div>
+                <!-- <span class="status-badge">{{ candidate.get_status_display }}</span> -->
+                <span class="status-badge {{ candidate.status }}">{{ candidate.get_status_display }}</span>
+
+            </div>
+        </div>
+        <div class="profile-section">
+            <label>Email:</label>
+            <div class="value">{{ candidate.applicant_email }}</div>
+        </div>
+        <div class="profile-section">
+            <label>Phone:</label>
+            <div class="value">{{ candidate.phone }}</div>
+        </div>
+        <div class="profile-section">
+            <label>Address:</label>
+            <div class="value">{{ candidate.address }}</div>
+        </div>
+        <div class="profile-section">
+            <label>Date of Birth:</label>
+            <div class="value">{{ candidate.date_of_birth|date:"M d, Y" }}</div>
+        </div>
+        <div class="profile-section">
+            <label>Gender:</label>
+            <div class="value">{{ candidate.gender }}</div>
+        </div>
+        <div class="profile-section">
+            <label>PAN Number:</label>
+            <div class="value">{{ candidate.pan_number }}</div>
+        </div>
+        <div class="profile-section">
+            <label>Aadhaar Number:</label>
+            <div class="value">{{ candidate.aadhaar_number }}</div>
+        </div>
+        <div class="profile-section">
+            <label>Bank Account:</label>
+            <div class="value">{{ candidate.bank_account }}</div>
+        </div>
+        <div class="profile-section">
+            <label>IFSC Code:</label>
+            <div class="value">{{ candidate.ifsc_code }}</div>
+        </div>
+        <div class="profile-section">
+            <label>Emergency Contact:</label>
+            <div class="value">{{ candidate.emergency_contact }}</div>
+        </div>
+        <div class="profile-section">
+            <label>Applied On:</label>
+            <div class="value">{{ candidate.applied_on|date:"M d, Y H:i" }}</div>
+        </div>
+        <div class="profile-section">
+            <label>Cover Letter:</label>
+            <div class="value">{{ candidate.cover_letter|default:"--" }}</div>
+        </div>
+        <div class="profile-section">
+            <label>Resume:</label>
+            <div class="value">
+                {% if candidate.resume %}
+                    <a href="{{ candidate.resume.url }}" target="_blank">Download Resume</a>
+                {% else %}
+                    --
+                {% endif %}
+            </div>
+        </div>
+        <div class="profile-actions">
+            <a href="{% url 'AppliedCandidates' %}">&larr; Back to Candidates List</a>
+        </div>
+    </div>
+</body>
+</html>

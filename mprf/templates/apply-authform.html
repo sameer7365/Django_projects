@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Signup Page</title>
+    <link rel="stylesheet" href="{% static 'css/apply-auth.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>
+            Application - {{ mprfapplyform.position }}
+            <span style="font-size: 1rem; color: #4a5568; font-weight: 400; margin-left: 10px;">
+                ({{ mprfapplyform.department.name }})
+            </span>
+        </h1>
+        <!-- Radio Buttons for Toggle -->
+        <input type="radio" id="login-tab" name="auth-tab" checked>
+        <input type="radio" id="signup-tab" name="auth-tab">
+
+        <!-- Toggle Labels -->
+        <div class="toggle-tabs">
+            <label for="login-tab">Already have an account?</label>
+            <label for="signup-tab">First time here?</label>
+        </div>
+
+        <!-- Login & Signup Forms -->
+        <div class="form-section">
+            <div class="form-box tab-content login-content">
+                <h2>Login</h2>
+                <form method="POST" action="{% url 'loginapply' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="mprfid" value="{{ mprfapplyform.id }}">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+
+            <div class="form-box tab-content signup-content">
+                <h2>Sign Up</h2>
+                <form method="POST" action="{% url 'signupapply' %}">
+                    {% csrf_token %}
+                    <input  name="mprfid" value="{{ mprfapplyform.id }}">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                    <input type="password" name="new_password" placeholder="Create Password" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

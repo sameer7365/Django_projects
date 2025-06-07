@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MPRF Request Form</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <div class="mprf-form-container">
+        <img src="{% static 'img/hr-logo.webp' %}" alt="HR Logo" class="mprf-logo">
+        <h2>Manpower Requisition Form</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="position" placeholder="Position Title" required>
+            <input type="number" name="vacancies" placeholder="Number of Vacancies" min="1" required>
+            <!-- <input type="text" name="department" placeholder="Department" required> -->
+            <select name="department" required>
+                <option value="">Select Department</option>
+                {% for dept in departments %}
+                <option value="{{ dept.id }}">{{ dept.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="text" name="location" placeholder="Location" required>
+            <textarea name="job_description" placeholder="Job Description" rows="4" required></textarea>
+            <textarea name="requirements" placeholder="Requirements" rows="3"></textarea>
+            <button type="submit">Submit Request</button>
+        </form>
+        <div class="jobs-links">
+            <a href="{% url 'dash' %}">Back to Dashboard</a>
+        </div>
+
+    </div>
+</body>
+
+</html>

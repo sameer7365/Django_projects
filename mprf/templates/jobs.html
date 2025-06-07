@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Openings | MPRF Portal</title>
+    <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
+</head>
+<body>
+    <div class="jobs-container">
+        <h2>Current Job Openings</h2>
+        {% if mprf_requests %}
+            <div class="jobs-list">
+                {% for job in mprf_requests %}
+                <div class="job-card">
+                    <div class="job-header">
+                        <span class="job-position">{{ job.position }}</span>
+                        <!-- <span class="job-status {{ job.status|lower }}">{{ job.get_status_display }}</span> -->
+                    </div>
+                    <div class="job-details">
+                        <span class="job-dept">{{ job.department.name }}</span>
+                        <span class="job-location">{{ job.location }}</span>
+                        <!-- <span class="job-vacancies">Vacancies: {{ job.vacancies }}</span> -->
+                    </div>
+                    <div class="job-desc">
+                        <strong>Description:</strong>
+                        <p>{{ job.job_description|default:"-" }}</p>
+                    </div>
+                    <div class="job-req">
+                        <strong>Requirements:</strong>
+                        <p>{{ job.requirements|default:"-" }}</p>
+                    </div>
+                </div>
+                <div class="jobs-links" >
+                    <!-- <a style="background-color: green;color: aliceblue;" href="/mprfapplyform/{{job.id}}">Apply</a> -->
+                    <a style="background-color: green;color: aliceblue;" href="/mprfauthform/{{job.id}}">Apply</a>
+
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-jobs">No job openings available at the moment.</p>
+        {% endif %}
+        <div class="jobs-links">
+            <a href="{% url 'home' %}">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

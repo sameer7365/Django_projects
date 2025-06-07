@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+    <link rel="stylesheet" href="{% static 'css/success.css' %}">
+</head>
+
+<body>
+    <div class="success-container">
+        <div class="success-circle">
+            <svg viewBox="0 0 52 52" class="success-tick">
+                <circle class="success-circle-bg" cx="26" cy="26" r="25" fill="none"/>
+                <path class="success-check" fill="none" d="M14 27l7 7 16-16"/>
+            </svg>
+        </div>
+        <h2>Request Submitted!</h2>
+        <p>Your MPRF request was created successfully.</p>
+        <a href="{% url 'mprfform' %}" class="success-btn">Go to Mprf form</a>
+    </div>
+</body>
+</html>

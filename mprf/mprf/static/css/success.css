@@ -1,0 +1,31 @@
+/* success style tempplate starts here */
+ .success-container {
+        text-align: center;
+        padding: 50px;
+        background-color: #f0f8ff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .success-circle {
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        position: relative;
+    }
+    .success-tick {
+        width: 100%;
+        height: 100%;
+    }
+    .success-circle-bg {
+        stroke: #4caf50;
+        stroke-width: 2;
+    }
+    .success-check {
+        stroke: #4caf50;
+        stroke-width: 4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+    h2 {
+        color: #4caf50;
+    }

@@ -1,0 +1,408 @@
+/* home page styles starts here */
+/* body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: url("../img/home-pic-hr.jpg") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+} */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #eeedf7;
+    padding: 16px 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 24px;
+    color: #2a4365;
+    letter-spacing: 1px;
+}
+
+.nav-links a {
+    margin-left: 24px;
+    text-decoration: none;
+    color: #2a4365;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 20px;
+    transition: background 0.2s, color 0.2s;
+    background: transparent;
+}
+.nav-links a:hover {
+    background: #2a4365;
+    color: #fff;
+}
+
+.container {
+    max-width: 400px;
+    margin: 120px auto 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(42,67,101,0.08);
+    padding: 40px 32px;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 28px;
+    color: #2a4365;
+    margin-bottom: 12px;
+}
+
+.container p {
+    font-size: 18px;
+    color: #4a5568;
+    margin-bottom: 0;
+}
+/* home page style ends here */
+
+
+/* signup page styles starts here */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
+    min-height: 100vh;
+}
+.signup-container {
+    max-width: 370px;
+    margin: 100px auto 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(42,67,101,0.10);
+    padding: 40px 32px;
+    text-align: center;
+}
+.signup-logo {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+.signup-container h2 {
+    margin-bottom: 24px;
+    color: #2a4365;
+    font-size: 24px;
+    font-weight: 700;
+}
+.signup-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.signup-container input[type="text"],
+.signup-container input[type="email"],
+.signup-container input[type="password"] {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 16px;
+}
+.signup-container button {
+    background: #2a4365;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.signup-container button:hover {
+    background: #1a365d;
+}
+.signup-container .links {
+    margin-top: 18px;
+    font-size: 14px;
+}
+.signup-container .links a {
+    color: #2a4365;
+    text-decoration: none;
+    margin: 0 8px;
+}
+.signup-container .links a:hover {
+    text-decoration: underline;
+}
+/* signup page styles ends here */
+
+
+/* login template styles starts here */
+.login-container {
+    max-width: 370px;
+    margin: 100px auto 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(42,67,101,0.10);
+    padding: 40px 32px;
+    text-align: center;
+}
+.login-logo {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+.login-container h2 {
+    margin-bottom: 24px;
+    color: #2a4365;
+    font-size: 24px;
+    font-weight: 700;
+}
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 16px;
+}
+.login-container button {
+    background: #2a4365;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.login-container button:hover {
+    background: #1a365d;
+}
+.login-container .links {
+    margin-top: 18px;
+    font-size: 14px;
+}
+.login-container .links a {
+    color: #2a4365;
+    text-decoration: none;
+    margin: 0 8px;
+}
+.login-container .links a:hover {
+    text-decoration: underline;
+}
+
+/* login template style ends here */
+
+
+/* dashboard styles starts here */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2a4365;
+    padding: 18px 48px;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(42,67,101,0.08);
+}
+
+.dashboard-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.dashboard-logo img {
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
+    background: #fff;
+    padding: 4px;
+}
+
+.dashboard-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 28px;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+.dashboard-links a:hover {
+    color: #90cdf4;
+}
+
+.dashboard-main {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin: 60px auto 0 auto;
+    flex-wrap: wrap;
+    max-width: 1100px;
+}
+
+.dashboard-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(42,67,101,0.10);
+    padding: 36px 32px 28px 32px;
+    text-align: center;
+    width: 300px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+.dashboard-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(42,67,101,0.16);
+}
+
+.dashboard-icon {
+    height: 54px;
+    width: 54px;
+    margin-bottom: 18px;
+}
+
+.dashboard-card h2 {
+    font-size: 1.4rem;
+    color: #2a4365;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.subtext {
+    font-size: 1rem;
+    color: #4a5568;
+    margin-bottom: 22px;
+}
+
+.dashboard-btn {
+    display: inline-block;
+    background: #2a4365;
+    color: #fff;
+    padding: 10px 28px;
+    border-radius: 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(42,67,101,0.10);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.dashboard-btn:hover {
+    background: #1a365d;
+    box-shadow: 0 4px 16px rgba(42,67,101,0.18);
+}
+
+@media (max-width: 1000px) {
+    .dashboard-main {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+    .dashboard-card {
+        width: 90%;
+        max-width: 350px;
+    }
+}
+
+/* dashbaord style ends here */
+
+
+
+/* mprf form styles starts */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
+    min-height: 100vh;
+}
+.mprf-form-container {
+    max-width: 420px;
+    margin: 80px auto 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(42,67,101,0.10);
+    padding: 40px 32px;
+    text-align: center;
+}
+.mprf-logo {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+.mprf-form-container h2 {
+    margin-bottom: 24px;
+    color: #2a4365;
+    font-size: 24px;
+    font-weight: 700;
+}
+.mprf-form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.mprf-form-container input[type="text"],
+.mprf-form-container input[type="number"],
+.mprf-form-container textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 16px;
+    resize: none;
+}
+.mprf-form-container textarea {
+    min-height: 60px;
+}
+.mprf-form-container button {
+    background: #2a4365;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.mprf-form-container button:hover {
+    background: #1a365d;
+}
+.mprf-form-container .links {
+    margin-top: 18px;
+    font-size: 14px;
+}
+.mprf-form-container .links a {
+    color: #2a4365;
+    text-decoration: none;
+    margin: 0 8px;
+}
+.mprf-form-container .links a:hover {
+    text-decoration: underline;
+}
+.mprf-form-container select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 16px;
+    background: #fff;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="%232a4365" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px 16px; 
+
+}
+/* mprf style ends here */
+
+
+
+
