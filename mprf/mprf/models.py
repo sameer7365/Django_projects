@@ -61,7 +61,7 @@ class MprfApply(models.Model):
     # skills = models.ManyToManyField(Skills, blank=True)
     resume = models.FileField(upload_to='resumes')
     cover_letter = models.TextField(blank=True, null=True)
-    applied_on = models.DateTimeField(auto_now_add=True)
+    applied_on = models.DateTimeField(auto_now_add=True,null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='submitted')
 
     emergency_contact = models.CharField(max_length=100, blank=True, null=True)
@@ -100,7 +100,7 @@ class EmployeeMaster(models.Model):
     # skills = models.ManyToManyField(Skills, blank=True)
     resume = models.FileField(upload_to='resumes')
     cover_letter = models.TextField(blank=True, null=True)
-    applied_on = models.DateTimeField(auto_now_add=True)
+    applied_on = models.DateTimeField(auto_now_add=True,null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='active')
 
     emergency_contact = models.CharField(max_length=100, blank=True, null=True)
@@ -108,6 +108,11 @@ class EmployeeMaster(models.Model):
     aadhaar_number = models.CharField(max_length=20, blank=True, null=True)
     bank_account = models.CharField(max_length=50, blank=True, null=True)
     ifsc_code = models.CharField(max_length=20, blank=True, null=True)
+    # created_at = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return f"{self.applicant_name}"
 
 
 

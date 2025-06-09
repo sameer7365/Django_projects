@@ -17,5 +17,5 @@ urlpatterns = [
     path('AppliedCandidates',views.AppliedCandidates,name='AppliedCandidates'),
     path('updatecandidatestatus<int:pk>',views.update_candidate_status,name='update_candidate_status'),
     path('formviewapplied<int:pk>',views.formviewapplied,name='formviewapplied'),
-
-]
+    path('employeelist',views.employeelist,name='employeelist'),
+    path('employeeform<int:pk>',views.employeeform,name='employeeform'),]

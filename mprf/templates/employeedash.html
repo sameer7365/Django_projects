@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Dashboard - {{ candidate.applicant_name }}</title>
+  <style>
+    body {
+      background: #f7f9fc;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+    }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 6px 24px rgba(42,67,101,0.13);
+      padding: 36px 32px 28px 32px;
+    }
+    .employee-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .avatar-wrapper {
+      margin-bottom: 18px;
+    }
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #e2e8f0;
+      background: #f1f5f9;
+    }
+    .info {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .name {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2a4365;
+      margin-bottom: 4px;
+    }
+    .position, .department {
+      font-size: 1.1rem;
+      color: #4a5568;
+      margin-bottom: 2px;
+    }
+    .details {
+      width: 100%;
+      margin-bottom: 24px;
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 18px 24px;
+    }
+    .group-title {
+      font-size: 1.1rem;
+      color: #2a4365;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .field-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-bottom: 12px;
+    }
+    .field-group > div {
+      min-width: 180px;
+      margin-bottom: 8px;
+    }
+    label {
+      font-weight: 600;
+      color: #2a4365;
+      font-size: 0.98rem;
+      margin-bottom: 2px;
+      display: block;
+    }
+    .kpi-section {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 18px;
+      gap: 18px;
+    }
+    .kpi {
+      background: #e6fffa;
+      border-radius: 10px;
+      padding: 18px 24px;
+      text-align: center;
+      min-width: 100px;
+      box-shadow: 0 2px 8px rgba(56,178,172,0.08);
+    }
+    .kpi-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #319795;
+    }
+    .kpi-label {
+      color: #2a4365;
+      font-size: 1rem;
+      margin-top: 4px;
+    }
+    .resume-link {
+      color: #3182ce;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    .resume-link:hover {
+      color: #225ea8;
+    }
+    .status-badge {
+      display: inline-block;
+      border-radius: 12px;
+      padding: 4px 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: 1px solid #b2f5ea;
+      background: #e6fffa;
+      color: #2c7a7b;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <main class="container" role="region" aria-label="Employee dashboard card">
+    <article class="employee-card" tabindex="0" aria-describedby="description">
+      <div class="avatar-wrapper" aria-hidden="true">
+        {% if candidate.img_candidate %}
+          <img src="{{ candidate.img_candidate.url }}" alt="Candidate Photo" class="profile-photo">
+        {% else %}
+          <img src="{% static 'img/default-profile.png' %}" alt="No Photo" class="profile-photo">
+        {% endif %}
+      </div>
+      <section class="info">
+        <h1 class="name">{{ candidate.applicant_name }}</h1>
+        <div class="status-badge">{{ candidate.get_status_display }}</div>
+        <p class="position" aria-label="Job title">{{ candidate.mprf_request.position }}</p>
+        <p class="department" aria-label="Department">{{ candidate.mprf_request.department.name }}</p>
+      </section>
+      <section class="details" aria-label="Employee detailed information">
+        <h3 class="group-title">Contact & Employment Info</h3>
+        <div class="field-group">
+          <div>
+            <label>Employee ID</label>
+            <span>EMP-10{{ candidate.id }}</span>
+          </div>
+          <div>
+            <label>Office Location</label>
+            <span>{{ candidate.mprf_request.location }}</span>
+          </div>
+          <div>
+            <label>Date Joined</label>
+            <span>{{ candidate.applied_on|date:"M d, Y" }}</span>
+          </div>
+        </div>
+        <div class="field-group">
+          <div>
+            <label>Phone (Mobile)</label>
+            <a href="tel:{{ candidate.phone }}">{{ candidate.phone }}</a>
+          </div>
+          <div>
+            <label>Email</label>
+            <a href="mailto:{{ candidate.applicant_email }}">{{ candidate.applicant_email }}</a>
+          </div>
+        </div>
+        <div class="field-group">
+          <div>
+            <label>Gender</label>
+            <span>{{ candidate.gender|default:"--" }}</span>
+          </div>
+          <div>
+            <label>Date of Birth</label>
+            <span>{{ candidate.date_of_birth|date:"M d, Y"|default:"--" }}</span>
+          </div>
+        </div>
+        <div class="field-group">
+          <div>
+            <label>PAN Number</label>
+            <span>{{ candidate.pan_number|default:"--" }}</span>
+          </div>
+          <div>
+            <label>Aadhaar Number</label>
+            <span>{{ candidate.aadhaar_number|default:"--" }}</span>
+          </div>
+        </div>
+        <div class="field-group">
+          <div>
+            <label>Bank Account</label>
+            <span>{{ candidate.bank_account|default:"--" }}</span>
+          </div>
+          <div>
+            <label>IFSC Code</label>
+            <span>{{ candidate.ifsc_code|default:"--" }}</span>
+          </div>
+        </div>
+        <div class="field-group">
+          <div>
+            <label>Emergency Contact</label>
+            <span>{{ candidate.emergency_contact|default:"--" }}</span>
+          </div>
+          <div>
+            <label>Resume</label>
+            {% if candidate.resume %}
+              <a href="{{ candidate.resume.url }}" class="resume-link" target="_blank">Download Resume</a>
+            {% else %}
+              <span>--</span>
+            {% endif %}
+          </div>
+        </div>
+        <div class="field-group">
+          <div>
+            <label>Cover Letter</label>
+            <span>{{ candidate.cover_letter|default:"--" }}</span>
+          </div>
+        </div>
+      </section>
+      <section class="kpi-section" aria-label="Employee performance metrics">
+        <div class="kpi" tabindex="0" role="group" aria-label="Projects completed">
+          <div class="kpi-value">32</div>
+          <div class="kpi-label">Projects</div>
+        </div>
+        <div class="kpi" tabindex="0" role="group" aria-label="Years of experience">
+          <div class="kpi-value">8</div>
+          <div class="kpi-label">Years</div>
+        </div>
+        <div class="kpi" tabindex="0" role="group" aria-label="Customer satisfaction rating">
+          <div class="kpi-value">4.7</div>
+          <div class="kpi-label">Rating</div>
+        </div>
+      </section>
+         <!-- <div class="profile-actions">
+            <a href="{% url 'employeelist' %}">&larr; Back to Employee's List</a>
+        </div> -->
+     
+    </article>
+  </main>
+</body>
+</html>

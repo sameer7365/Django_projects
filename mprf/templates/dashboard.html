@@ -21,22 +21,22 @@
     </div>
     <div class="dashboard-main">
         <div class="dashboard-card">
-            <img src="{% static 'img/form-icon.png' %}" alt="Form" class="dashboard-icon">
+            <!-- <img src=""  alt="Form" class="dashboard-icon"></img> -->
             <h2>MPRF Request Form</h2>
             <div class="subtext">Submit or view your manpower requests</div>
             <a href="{% url 'mprfform' %}" class="dashboard-btn">Go to Form</a>
         </div>
         <div class="dashboard-card">
-            <img src="{% static 'img/candidates-icon.png' %}" alt="Candidates" class="dashboard-icon">
+            <!-- <img src="{% static 'img/candidates-icon.png' %}" alt="Candidates" class="dashboard-icon"> -->
             <h2>Applied Candidates</h2>
             <div class="subtext">See all candidates who have applied</div>
             <a href="{% url 'AppliedCandidates' %}" class="dashboard-btn">View Candidates</a>
         </div>
         <div class="dashboard-card">
-            <img src="{% static 'img/employee-icon.png' %}" alt="Employee" class="dashboard-icon">
+            <!-- <img src="{% static 'img/employee-icon.png' %}" alt="Employee" class="dashboard-icon"> -->
             <h2>Employee</h2>
             <div class="subtext">Employee details and management</div>
-            <a href="#" class="dashboard-btn">Employee Info</a>
+            <a href="{% url 'employeelist' %}" class="dashboard-btn">Employee Info</a>
         </div>
     </div>
 </body>

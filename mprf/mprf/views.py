@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.contrib.auth.models import Group
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -54,7 +55,11 @@ def login(request):
                 check_password = user.check_password(password)
                 if check_password:
                     request.session['username'] = username
-                    return redirect("dash")
+                    if user.groups.filter(name='Admin').exists():
+                        return redirect("dash")
+                    else:
+                        val = EmployeeMaster.objects.get(user_id=user)
+                        return redirect("employeeform",pk=val.pk)
                 else:
                     return HttpResponse("Invalid credentials, please try again.")
             except User.DoesNotExist:
@@ -66,7 +71,6 @@ def login(request):
 
 
 def dash(request):
- 
     return render(request, 'dashboard.html')
 
 def mprfform(request):
@@ -330,20 +334,15 @@ def signupapply(request):
 
 
 def update_candidate_status(request, pk):
-    print(pk)
     if request.method == 'POST':
         update_status = request.POST.get('status')
         val = MprfApply.objects.filter(pk=pk).first()
-        print("update_status", update_status)
         if update_status == 'accepted':
-            application_instance = val  # This is your MprfApply instance
+            application_instance = val  
 
             # Get related instances
             mprf_request_instance = application_instance.mprf_request
             user_instance = application_instance.user_id
-            # img_candidate = application_instance.FILES.get('img_candidate')
-            # resume = application_instance.FILES.get('resume')
-            # print(7775555,img_candidate,resume)
 
             # creation of employee 
             employee = EmployeeMaster.objects.create(
@@ -352,12 +351,12 @@ def update_candidate_status(request, pk):
                 user_id=user_instance,
                 applicant_name=application_instance.applicant_name,
                 applicant_email=application_instance.applicant_email,
-                img_candidate=application_instance.img_candidate,  # This is a FileField/ImageField object
+                img_candidate=application_instance.img_candidate, 
                 phone=application_instance.phone,
                 address=application_instance.address,
                 date_of_birth=application_instance.date_of_birth,
                 gender=application_instance.gender,
-                resume=application_instance.resume,                # This is a FileField object
+                resume=application_instance.resume,               
                 cover_letter=application_instance.cover_letter,
                 applied_on=application_instance.applied_on,
                 status='active',
@@ -369,10 +368,36 @@ def update_candidate_status(request, pk):
             )
             employee.save()
         val.status = update_status
-        val.save()  # Save the updated status to the database
+        val.save()  
 
-    print("----- val ------>>>>", val)
     return redirect('AppliedCandidates')
+
+
+def employeelist(request):
+    print("employeelist called !!")
+
+    candidates = EmployeeMaster.objects.all()
+
+    context = {'candidates':candidates}
+
+
+
+    # return HttpResponse("employye list view opened")
+    return render(request,'employeelist.html',context)
+
+
+def employeeform(request,pk):
+    print("gggg",pk)
+
+    # EmployeeMaster.objects.all()
+    candidate = EmployeeMaster.objects.get(pk=pk)
+    context = {
+        'candidate': candidate,
+    }
+    return render(request, 'employeedash.html', context)
+
+
+
 
    
 
